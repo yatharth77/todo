@@ -28,5 +28,5 @@ Things you may want to cover:
 * ...
 >>>>>>> 69f201a... first commit
 
+![alt text](https://github.com/yatharth77/todo/blob/master/List.png)
 ![alt text](https://github.com/yatharth77/todo/blob/master/Item.png)
-![alt text](http://url/to/img.png)
