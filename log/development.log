@@ -5765,3 +5765,346 @@ Processing by TodoListsController#show as HTML
 Completed 200 OK in 26ms (Views: 23.5ms | ActiveRecord: 0.3ms | Allocations: 8571)
 
 
+Started GET "/" for 127.0.0.1 at 2020-05-21 09:15:12 +0530
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TodoListsController#index as HTML
+  Rendering todo_lists/index.html.erb within layouts/application
+  [1m[36mTodoList Load (0.6ms)[0m  [1m[34mSELECT "todo_lists".* FROM "todo_lists"[0m
+  ↳ app/views/todo_lists/index.html.erb:1
+  Rendered todo_lists/index.html.erb within layouts/application (Duration: 28.8ms | Allocations: 4345)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 406ms (Views: 327.2ms | ActiveRecord: 2.1ms | Allocations: 13660)
+
+
+Started GET "/todo_lists/2" for 127.0.0.1 at 2020-05-21 09:15:16 +0530
+Processing by TodoListsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTodoList Load (0.2ms)[0m  [1m[34mSELECT "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/todo_lists_controller.rb:66:in `set_todo_list'
+  Rendering todo_lists/show.html.erb within layouts/application
+  [1m[36mTodoItem Load (0.5ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items" WHERE "todo_items"."todo_list_id" = ? ORDER BY "todo_items"."priority" DESC, "todo_items"."due_date" DESC[0m  [["todo_list_id", 2]]
+  ↳ app/views/todo_lists/show.html.erb:6:in `sort_by'
+  Rendered collection of todo_items/_todo_item.html.erb [4 times] (Duration: 5.7ms | Allocations: 896)
+  Rendered todo_items/_form.html.erb (Duration: 3.6ms | Allocations: 1371)
+  Rendered todo_lists/show.html.erb within layouts/application (Duration: 189.2ms | Allocations: 12066)
+Completed 500 Internal Server Error in 219ms (ActiveRecord: 2.5ms | Allocations: 15422)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= form_for([@todo_list, @todo_list.todo_items.build]) do |f| %>
+ <%= f.text_field :content, placeholder: "New Todo" %>
+ <%= f.select :priority, [1,2,3]>
+ <%= f.date_field :due_date %>
+ <%= f.submit %>
+<% end %>
+):
+1:    <%= form_for([@todo_list, @todo_list.todo_items.build]) do |f| %>
+2:     <%= f.text_field :content, placeholder: "New Todo" %>
+3:     <%= f.select :priority, [1,2,3]>
+4:     <%= f.date_field :due_date %>
+5:     <%= f.submit %>
+6:    <% end %>
+  
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_lists/show.html.erb:10
+Started GET "/todo_lists/2" for 127.0.0.1 at 2020-05-21 09:15:19 +0530
+Processing by TodoListsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTodoList Load (0.3ms)[0m  [1m[34mSELECT "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/todo_lists_controller.rb:66:in `set_todo_list'
+  Rendering todo_lists/show.html.erb within layouts/application
+  [1m[36mTodoItem Load (0.2ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items" WHERE "todo_items"."todo_list_id" = ? ORDER BY "todo_items"."priority" DESC, "todo_items"."due_date" DESC[0m  [["todo_list_id", 2]]
+  ↳ app/views/todo_lists/show.html.erb:6:in `sort_by'
+  Rendered collection of todo_items/_todo_item.html.erb [4 times] (Duration: 4.2ms | Allocations: 489)
+  Rendered todo_items/_form.html.erb (Duration: 1.4ms | Allocations: 1180)
+  Rendered todo_lists/show.html.erb within layouts/application (Duration: 12.1ms | Allocations: 2906)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.5ms | Allocations: 3932)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= form_for([@todo_list, @todo_list.todo_items.build]) do |f| %>
+ <%= f.text_field :content, placeholder: "New Todo" %>
+ <%= f.select :priority, [1,2,3]>
+ <%= f.date_field :due_date %>
+ <%= f.submit %>
+<% end %>
+):
+1:    <%= form_for([@todo_list, @todo_list.todo_items.build]) do |f| %>
+2:     <%= f.text_field :content, placeholder: "New Todo" %>
+3:     <%= f.select :priority, [1,2,3]>
+4:     <%= f.date_field :due_date %>
+5:     <%= f.submit %>
+6:    <% end %>
+  
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_lists/show.html.erb:10
+Started GET "/todo_lists/2" for 127.0.0.1 at 2020-05-21 09:15:21 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by TodoListsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTodoList Load (0.4ms)[0m  [1m[34mSELECT "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/todo_lists_controller.rb:66:in `set_todo_list'
+  Rendering todo_lists/show.html.erb within layouts/application
+  [1m[36mTodoItem Load (0.3ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items" WHERE "todo_items"."todo_list_id" = ? ORDER BY "todo_items"."priority" DESC, "todo_items"."due_date" DESC[0m  [["todo_list_id", 2]]
+  ↳ app/views/todo_lists/show.html.erb:6:in `sort_by'
+  Rendered collection of todo_items/_todo_item.html.erb [4 times] (Duration: 1.4ms | Allocations: 488)
+  Rendered todo_items/_form.html.erb (Duration: 1.6ms | Allocations: 1226)
+  Rendered todo_lists/show.html.erb within layouts/application (Duration: 12.6ms | Allocations: 4353)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.7ms | Allocations: 5938)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= form_for([@todo_list, @todo_list.todo_items.build]) do |f| %>
+ <%= f.text_field :content, placeholder: "New Todo" %>
+ <%= f.select :priority, [1,2,3]>
+ <%= f.date_field :due_date %>
+ <%= f.submit %>
+<% end %>
+):
+1:    <%= form_for([@todo_list, @todo_list.todo_items.build]) do |f| %>
+2:     <%= f.text_field :content, placeholder: "New Todo" %>
+3:     <%= f.select :priority, [1,2,3]>
+4:     <%= f.date_field :due_date %>
+5:     <%= f.submit %>
+6:    <% end %>
+  
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_lists/show.html.erb:10
+Started GET "/todo_lists/2" for 127.0.0.1 at 2020-05-21 09:15:22 +0530
+Started GET "/todo_lists/2" for 127.0.0.1 at 2020-05-21 09:15:22 +0530
+Processing by TodoListsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTodoList Load (0.4ms)[0m  [1m[34mSELECT "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/todo_lists_controller.rb:66:in `set_todo_list'
+  Rendering todo_lists/show.html.erb within layouts/application
+  [1m[36mTodoItem Load (0.5ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items" WHERE "todo_items"."todo_list_id" = ? ORDER BY "todo_items"."priority" DESC, "todo_items"."due_date" DESC[0m  [["todo_list_id", 2]]
+  ↳ app/views/todo_lists/show.html.erb:6:in `sort_by'
+Processing by TodoListsController#show as HTML
+  Rendered collection of todo_items/_todo_item.html.erb [4 times] (Duration: 1.1ms | Allocations: 488)
+  Parameters: {"id"=>"2"}
+  [1m[36mTodoList Load (0.3ms)[0m  [1m[34mSELECT "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/todo_lists_controller.rb:66:in `set_todo_list'
+  Rendering todo_lists/show.html.erb within layouts/application
+  [1m[36mTodoItem Load (0.3ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items" WHERE "todo_items"."todo_list_id" = ? ORDER BY "todo_items"."priority" DESC, "todo_items"."due_date" DESC[0m  [["todo_list_id", 2]]
+  Rendered todo_items/_form.html.erb (Duration: 12.7ms | Allocations: 2620)
+  Rendered todo_lists/show.html.erb within layouts/application (Duration: 20.8ms | Allocations: 5501)
+  ↳ app/views/todo_lists/show.html.erb:6:in `sort_by'
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 0.9ms | Allocations: 8149)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= form_for([@todo_list, @todo_list.todo_items.build]) do |f| %>
+ <%= f.text_field :content, placeholder: "New Todo" %>
+ <%= f.select :priority, [1,2,3]>
+ <%= f.date_field :due_date %>
+ <%= f.submit %>
+<% end %>
+):
+1:    <%= form_for([@todo_list, @todo_list.todo_items.build]) do |f| %>
+2:     <%= f.text_field :content, placeholder: "New Todo" %>
+3:     <%= f.select :priority, [1,2,3]>
+4:     <%= f.date_field :due_date %>
+5:     <%= f.submit %>
+6:    <% end %>
+  
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_lists/show.html.erb:10
+  Rendered collection of todo_items/_todo_item.html.erb [4 times] (Duration: 1.4ms | Allocations: 488)
+  Rendered todo_items/_form.html.erb (Duration: 2.2ms | Allocations: 1184)
+  Rendered todo_lists/show.html.erb within layouts/application (Duration: 214.0ms | Allocations: 129969)
+Completed 500 Internal Server Error in 219ms (ActiveRecord: 0.6ms | Allocations: 130965)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= form_for([@todo_list, @todo_list.todo_items.build]) do |f| %>
+ <%= f.text_field :content, placeholder: "New Todo" %>
+ <%= f.select :priority, [1,2,3]>
+ <%= f.date_field :due_date %>
+ <%= f.submit %>
+<% end %>
+):
+1:    <%= form_for([@todo_list, @todo_list.todo_items.build]) do |f| %>
+2:     <%= f.text_field :content, placeholder: "New Todo" %>
+3:     <%= f.select :priority, [1,2,3]>
+4:     <%= f.date_field :due_date %>
+5:     <%= f.submit %>
+6:    <% end %>
+  
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_lists/show.html.erb:10
+Started GET "/todo_lists/2" for 127.0.0.1 at 2020-05-21 09:15:28 +0530
+Processing by TodoListsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTodoList Load (0.2ms)[0m  [1m[34mSELECT "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/todo_lists_controller.rb:66:in `set_todo_list'
+  Rendering todo_lists/show.html.erb within layouts/application
+  [1m[36mTodoItem Load (0.3ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items" WHERE "todo_items"."todo_list_id" = ? ORDER BY "todo_items"."priority" DESC, "todo_items"."due_date" DESC[0m  [["todo_list_id", 2]]
+  ↳ app/views/todo_lists/show.html.erb:6:in `sort_by'
+  Rendered collection of todo_items/_todo_item.html.erb [4 times] (Duration: 2.0ms | Allocations: 488)
+  Rendered todo_items/_form.html.erb (Duration: 1.1ms | Allocations: 1179)
+  Rendered todo_lists/show.html.erb within layouts/application (Duration: 9.3ms | Allocations: 2870)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.4ms | Allocations: 3846)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= form_for([@todo_list, @todo_list.todo_items.build]) do |f| %>
+ <%= f.text_field :content, placeholder: "New Todo" %>
+ <%= f.select :priority, [1,2,3]>
+ <%= f.date_field :due_date %>
+ <%= f.submit %>
+<% end %>
+):
+1:    <%= form_for([@todo_list, @todo_list.todo_items.build]) do |f| %>
+2:     <%= f.text_field :content, placeholder: "New Todo" %>
+3:     <%= f.select :priority, [1,2,3]>
+4:     <%= f.date_field :due_date %>
+5:     <%= f.submit %>
+6:    <% end %>
+  
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:4: syntax error, unexpected '<'
+app/views/todo_items/_form.html.erb:6: syntax error, unexpected `end', expecting ')'
+app/views/todo_items/_form.html.erb:8: syntax error, unexpected `end', expecting ')'
+app/views/todo_lists/show.html.erb:10
+Started GET "/todo_lists/2" for 127.0.0.1 at 2020-05-21 09:16:14 +0530
+Processing by TodoListsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTodoList Load (0.2ms)[0m  [1m[34mSELECT "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/todo_lists_controller.rb:66:in `set_todo_list'
+  Rendering todo_lists/show.html.erb within layouts/application
+  [1m[36mTodoItem Load (0.2ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items" WHERE "todo_items"."todo_list_id" = ? ORDER BY "todo_items"."priority" DESC, "todo_items"."due_date" DESC[0m  [["todo_list_id", 2]]
+  ↳ app/views/todo_lists/show.html.erb:6:in `sort_by'
+  Rendered collection of todo_items/_todo_item.html.erb [4 times] (Duration: 2.9ms | Allocations: 868)
+  Rendered todo_items/_form.html.erb (Duration: 275.8ms | Allocations: 4918)
+  Rendered todo_lists/show.html.erb within layouts/application (Duration: 284.2ms | Allocations: 7582)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 303ms (Views: 300.6ms | ActiveRecord: 0.3ms | Allocations: 12856)
+
+
+Started GET "/todo_lists/2" for 127.0.0.1 at 2020-05-21 09:18:06 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by TodoListsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTodoList Load (0.7ms)[0m  [1m[34mSELECT "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? ORDER BY "todo_lists"."created_at" DESC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/todo_lists_controller.rb:66:in `set_todo_list'
+  Rendering todo_lists/show.html.erb within layouts/application
+  [1m[36mTodoItem Load (0.6ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items" WHERE "todo_items"."todo_list_id" = ? ORDER BY "todo_items"."priority" DESC, "todo_items"."due_date" DESC[0m  [["todo_list_id", 2]]
+  ↳ app/views/todo_lists/show.html.erb:6:in `sort_by'
+  Rendered collection of todo_items/_todo_item.html.erb [4 times] (Duration: 4.6ms | Allocations: 881)
+  Rendered todo_items/_form.html.erb (Duration: 3.2ms | Allocations: 1064)
+  Rendered todo_lists/show.html.erb within layouts/application (Duration: 31.1ms | Allocations: 9734)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 54ms (Views: 36.3ms | ActiveRecord: 3.4ms | Allocations: 19074)
+
+
+Started GET "/" for 127.0.0.1 at 2020-05-21 09:18:10 +0530
+Processing by TodoListsController#index as HTML
+  Rendering todo_lists/index.html.erb within layouts/application
+  [1m[36mTodoList Load (0.2ms)[0m  [1m[34mSELECT "todo_lists".* FROM "todo_lists" ORDER BY "todo_lists"."created_at" DESC[0m
+  ↳ app/views/todo_lists/index.html.erb:1
+  Rendered todo_lists/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 937)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 12.6ms | ActiveRecord: 0.2ms | Allocations: 4991)
+
+
